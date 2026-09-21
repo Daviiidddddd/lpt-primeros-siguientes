@@ -1,0 +1,91 @@
+================================================================
+ Gramática: gramatica1.txt
+================================================================
+Símbolo inicial : S
+No terminales   : S, A, B, C, D
+Terminales      : uno, dos, tres, cuatro, cinco, seis
+
+REGLAS
+   1. S → A uno B C
+   2. S → S dos
+   3. A → B C D
+   4. A → A tres
+   5. A → ε
+   6. B → D cuatro C tres
+   7. B → ε
+   8. C → cinco D B
+   9. C → ε
+  10. D → seis
+  11. D → ε
+
+PRIMEROS
+  PRIMEROS(S) = { uno, tres, cuatro, cinco, seis }
+  PRIMEROS(A) = { tres, cuatro, cinco, seis, ε }
+  PRIMEROS(B) = { cuatro, seis, ε }
+  PRIMEROS(C) = { cinco, ε }
+  PRIMEROS(D) = { seis, ε }
+
+SIGUIENTES
+  SIGUIENTES(S) = { dos, $ }
+  SIGUIENTES(A) = { uno, tres }
+  SIGUIENTES(B) = { uno, dos, tres, cinco, seis, $ }
+  SIGUIENTES(C) = { uno, dos, tres, seis, $ }
+  SIGUIENTES(D) = { uno, dos, tres, cuatro, seis, $ }
+
+PREDICCIÓN
+   1. S → A uno B C         { uno, tres, cuatro, cinco, seis }
+   2. S → S dos             { uno, tres, cuatro, cinco, seis }
+   3. A → B C D             { uno, tres, cuatro, cinco, seis }
+   4. A → A tres            { tres, cuatro, cinco, seis }
+   5. A → ε                 { uno, tres }
+   6. B → D cuatro C tres   { cuatro, seis }
+   7. B → ε                 { uno, dos, tres, cinco, seis, $ }
+   8. C → cinco D B         { cinco }
+   9. C → ε                 { uno, dos, tres, seis, $ }
+  10. D → seis              { seis }
+  11. D → ε                 { uno, dos, tres, cuatro, seis, $ }
+
+================================================================
+ Gramática: gramatica2.txt
+================================================================
+Símbolo inicial : S
+No terminales   : S, A, B, C, D
+Terminales      : uno, dos, tres, cuatro, cinco, seis
+
+REGLAS
+   1. S → A B uno
+   2. A → dos B
+   3. A → ε
+   4. B → C D
+   5. B → tres
+   6. B → ε
+   7. C → cuatro A B
+   8. C → cinco
+   9. D → seis
+  10. D → ε
+
+PRIMEROS
+  PRIMEROS(S) = { uno, dos, tres, cuatro, cinco }
+  PRIMEROS(A) = { dos, ε }
+  PRIMEROS(B) = { tres, cuatro, cinco, ε }
+  PRIMEROS(C) = { cuatro, cinco }
+  PRIMEROS(D) = { seis, ε }
+
+SIGUIENTES
+  SIGUIENTES(S) = { $ }
+  SIGUIENTES(A) = { uno, tres, cuatro, cinco, seis }
+  SIGUIENTES(B) = { uno, tres, cuatro, cinco, seis }
+  SIGUIENTES(C) = { uno, tres, cuatro, cinco, seis }
+  SIGUIENTES(D) = { uno, tres, cuatro, cinco, seis }
+
+PREDICCIÓN
+   1. S → A B uno      { uno, dos, tres, cuatro, cinco }
+   2. A → dos B        { dos }
+   3. A → ε            { uno, tres, cuatro, cinco, seis }
+   4. B → C D          { cuatro, cinco }
+   5. B → tres         { tres }
+   6. B → ε            { uno, tres, cuatro, cinco, seis }
+   7. C → cuatro A B   { cuatro }
+   8. C → cinco        { cinco }
+   9. D → seis         { seis }
+  10. D → ε            { uno, tres, cuatro, cinco, seis }
