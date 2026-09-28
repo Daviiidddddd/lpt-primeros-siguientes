@@ -103,9 +103,9 @@ Anulables: `A`, `B`, `D`.
 
 | | PRIMEROS | SIGUIENTES |
 |---|---|---|
-| S | `{uno, dos, tres, cuatro, cinco}` | `{$}` |
+| S | `{dos, tres, cuatro, cinco, seis}` | `{$}` |
 | A | `{dos, ε}` | `{uno, tres, cuatro, cinco, seis}` |
-| B | `{tres, cuatro, cinco, ε}` | `{uno, tres, cuatro, cinco, seis}` |
+| B | `{tres, cuatro, cinco, seis, ε}` | `{uno, tres, cuatro, cinco, seis}` |
 | C | `{cuatro, cinco}` | `{uno, tres, cuatro, cinco, seis}` |
 | D | `{seis, ε}` | `{uno, tres, cuatro, cinco, seis}` |
 
@@ -121,6 +121,8 @@ Anulables: `A`, `B`, `D`.
 | 8 | `C → cinco` | `{cinco}` |
 | 9 | `D → seis` | `{seis}` |
 | 10 | `D → ε` | `{uno, tres, cuatro, cinco, seis}` |
+
+PRIMEROS de `S` y de `B` se agrupan por reglas: `P(B) = {tres, ε} ∪ (P(CD) − {ε})` y `P(S) = P(AB) − {ε}`.
 
 SIGUIENTES de `A`, `B` y `C` dependen entre sí en ciclo, así que el punto fijo los iguala. Ninguno tiene `$`, porque toda cadena del lenguaje termina en `uno`.
 

@@ -272,16 +272,16 @@ Son anulables $A$, $B$ y $D$. $C$ no lo es, porque sus dos reglas empiezan con u
 \toprule
 No terminal & PRIMEROS & SIGUIENTES \\
 \midrule
-$S$ & \{\texttt{uno}, \texttt{dos}, \texttt{tres}, \texttt{cuatro}, \texttt{cinco}\} & \{\texttt{\$}\} \\
+$S$ & \{\texttt{dos}, \texttt{tres}, \texttt{cuatro}, \texttt{cinco}, \texttt{seis}\} & \{\texttt{\$}\} \\
 $A$ & \{\texttt{dos}, $\varepsilon$\} & \{\texttt{uno}, \texttt{tres}, \texttt{cuatro}, \texttt{cinco}, \texttt{seis}\} \\
-$B$ & \{\texttt{tres}, \texttt{cuatro}, \texttt{cinco}, $\varepsilon$\} & \{\texttt{uno}, \texttt{tres}, \texttt{cuatro}, \texttt{cinco}, \texttt{seis}\} \\
+$B$ & \{\texttt{tres}, \texttt{cuatro}, \texttt{cinco}, \texttt{seis}, $\varepsilon$\} & \{\texttt{uno}, \texttt{tres}, \texttt{cuatro}, \texttt{cinco}, \texttt{seis}\} \\
 $C$ & \{\texttt{cuatro}, \texttt{cinco}\} & \{\texttt{uno}, \texttt{tres}, \texttt{cuatro}, \texttt{cinco}, \texttt{seis}\} \\
 $D$ & \{\texttt{seis}, $\varepsilon$\} & \{\texttt{uno}, \texttt{tres}, \texttt{cuatro}, \texttt{cinco}, \texttt{seis}\} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-En PRIMEROS, la diferencia con el ejercicio 1 es que $C$ no es anulable. En $B \rightarrow C\,D$, $B$ recibe solo $\prim(C) = \{\tk{cuatro}, \tk{cinco}\}$ y ahí se detiene, sin mirar a $D$. $S$ recoge \tk{dos} de $A$; como $A$ es anulable, sigue con $B$ (\tk{tres}, \tk{cuatro}, \tk{cinco}) y, como $B$ también lo es, llega hasta \tk{uno}.
+Para PRIMEROS se siguió el desarrollo hecho en clase, agrupando por reglas: $\prim(B) = \{\tk{tres}, \varepsilon\} \cup \big(\prim(CD) - \{\varepsilon\}\big)$ y $\prim(S) = \prim(AB) - \{\varepsilon\}$. De ahí salen los conjuntos de la tabla anterior.
 
 En SIGUIENTES aparece una dependencia cíclica. Por $C \rightarrow \tk{cuatro}\ A\,B$, con $B$ anulable, $\sig(C)$ pasa a $A$ y a $B$; por $B \rightarrow C\,D$, con $D$ anulable, $\sig(B)$ pasa a $C$ y a $D$; y por $A \rightarrow \tk{dos}\ B$, $\sig(A)$ pasa a $B$. Como $A$, $B$ y $C$ se alimentan entre sí, el punto fijo los deja iguales, y $D$ termina igual a $B$. Ninguno contiene \tk{\$}: $S$ no aparece en el lado derecho de ninguna regla y toda cadena del lenguaje termina en \tk{uno}.
 
@@ -318,7 +318,7 @@ En SIGUIENTES aparece una dependencia cíclica. Por $C \rightarrow \tk{cuatro}\ 
 
 De los dos ejercicios se pueden sacar tres observaciones.
 
-La primera es que la anulabilidad es lo que más influye en el cálculo. En el ejercicio 1, cuatro de los cinco no terminales son anulables, y por eso casi todos los conjuntos terminan grandes: PRIMEROS de una regla depende de varios símbolos seguidos, y SIGUIENTES se propaga de un no terminal a otro. En el ejercicio 2, en cambio, basta con que $C$ no sea anulable para que $\prim(B)$ se detenga en $C$.
+La primera es que la anulabilidad es lo que más influye en el cálculo. En el ejercicio 1, cuatro de los cinco no terminales son anulables, y por eso casi todos los conjuntos terminan grandes: PRIMEROS de una regla depende de varios símbolos seguidos, y SIGUIENTES se propaga de un no terminal a otro. En el ejercicio 2 el cálculo se agrupó por reglas, tomando los PRIMEROS de cada lado derecho completo.
 
 La segunda es que el algoritmo de punto fijo evita tener que ordenar el cálculo. En el ejercicio 2 no hay un orden que permita calcular SIGUIENTES de una sola pasada, porque $A$, $B$ y $C$ dependen unos de otros. Con el punto fijo se repiten las pasadas hasta que ningún conjunto crece, sin decidir nada a mano.
 
