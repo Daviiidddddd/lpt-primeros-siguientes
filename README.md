@@ -49,7 +49,7 @@ No necesita librerías externas. En Windows se usa `python conjuntos.py`, que si
 
 Ejecución en Ubuntu:
 
-<img src="docs/img/evid_ejecucion.png" width="560">
+
 
 ## Ejercicio 1
 
@@ -87,7 +87,7 @@ Anulables: `A`, `B`, `C`, `D`.
 
 Como `A` es anulable, `A → A tres` mete `tres` en PRIMEROS(A). `B` recibe SIGUIENTES de tres lugares distintos, y por eso es el conjunto más grande.
 
-<img src="docs/img/evid_ejercicio1.png" width="560">
+
 
 ## Ejercicio 2
 
@@ -126,7 +126,7 @@ PRIMEROS de `S` y de `B` se agrupan por reglas: `P(B) = {tres, ε} ∪ (P(CD) �
 
 SIGUIENTES de `A`, `B` y `C` dependen entre sí en ciclo, así que el punto fijo los iguala. Ninguno tiene `$`, porque toda cadena del lenguaje termina en `uno`.
 
-<img src="docs/img/evid_ejercicio2.png" width="560">
+
 
 ## Estructura
 
